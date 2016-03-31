@@ -15,7 +15,7 @@ do
         w) warn=$OPTARG ;;
         c) crit=$OPTARG ;;
 		h) print_help 0 ;;
-		help) print_help 0 ;;
+		help) print_help 0
 		exit 0 ;; 
 	esac
 done
