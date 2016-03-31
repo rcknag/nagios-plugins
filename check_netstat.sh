@@ -39,6 +39,10 @@ if [ -z "$warn" ] || [ -z "$crit" ] || [ -z "$port" ]; then
 echo "Invalid parameters. Script requires a port, warning, and critical. To access the help menu use the -h flag."
 exit 0
 fi
+if [ $crit -le $warn]; then
+echo "Critical value must be higher than the warning value."
+exit 0
+fi
 
 # Set vars
 netstat=$(which netstat)
