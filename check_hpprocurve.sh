@@ -15,6 +15,7 @@ echo "-v        SNMP version"
 echo "-c        Community string"
 echo "-H        Host"
 echo "-t        Check type (1 (load), 2 (uptime), 3 (interface status - requires i)"
+echo "-t        Check type 4 (IfInBroad), 5 (IfOutBroad), 6 (IfOutMulti), 7 (IfInMulti), 8 (Excess Collissions)"
 echo "-i        Interface (if required by type of check)"
 echo "-h        Help menu"
 echo ""
@@ -57,5 +58,20 @@ echo "$upti"
 elif [ $type -eq 3 ]; then
 intstat=$(snmpwalk -v $vers -c $comm $host ifOperStatus.$int)
 echo "$intstat"
+elif [ $type -eq 4 ]; then
+ifinbroad=$(snmpwalk -v $vers -c $comm $host 1.3.6.1.2.1.31.1.1.1.3.$int)
+echo "$ifinbroad"
+elif [ $type -eq 5 ]; then
+ifoutbroad=$(snmpwalk -v $vers -c $comm $host 1.3.6.1.2.1.31.1.1.1.5.$int)
+echo "$ifoutbroad"
+elif [ $type -eq 6 ]; then
+ifoutmulti=$(snmpwalk -v $vers -c $comm $host 1.3.6.1.2.1.31.1.1.1.4.$int)
+echo "$ifoutmulti"
+elif [ $type -eq 7 ]; then
+ifinmulti=$(snmpwalk -v $vers -c $comm $host 1.3.6.1.2.1.31.1.1.1.2.$int)
+echo "$ifinmulti"
+elif [ $type -eq 8 ]; then
+excesscoll=$(snmpwalk -v $vers -c $comm $host 1.3.6.1.2.1.10.7.2.1.9.$int)
+echo "$excesscoll"
 fi
 exit 0
