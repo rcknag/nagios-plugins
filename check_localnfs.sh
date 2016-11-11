@@ -9,7 +9,7 @@
 
 # Help menu
 print_help() {
-echo "This plugin will check for specific NFS mounts (mount | grep 'type nfs' | grep path | wc -l) for the specified port."
+echo "This plugin will check for specific NFS mounts path using check_disk."
 echo "Flags:"
 echo "-p        Path to check"
 echo "-h        Help menu"
