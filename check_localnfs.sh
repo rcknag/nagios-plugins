@@ -37,7 +37,8 @@ fi
 
 
 # Set vars
-count=$(mount | grep 'type nfs' | grep "$path" | wc -l)
+count=$(/usr/bin/timeout 10 /usr/local/nagios/libexec/check_disk -w 10 -c 20 -p "$path" | wc -l)
+
 
 # Check count value
 if [ $count -eq 1 ]
